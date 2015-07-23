@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.hcsservices.fhir.hl7.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.hcsservices.fhir.hl7.org/">
+
+<xs:element name="getAllHCSLogEvents" type="tns:getAllHCSLogEvents"/>
+
+<xs:element name="getAllHCSLogEventsResponse" type="tns:getAllHCSLogEventsResponse"/>
+
+<xs:element name="hcslogs" type="tns:hcslogs"/>
+
+<xs:element name="saveAuthorizationEvent" type="tns:saveAuthorizationEvent"/>
+
+<xs:element name="saveAuthorizationEventResponse" type="tns:saveAuthorizationEventResponse"/>
+
+<xs:complexType name="saveAuthorizationEvent">
+<xs:sequence>
+<xs:element name="hcsobj" type="tns:hcslogs" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hcslogs">
+<xs:sequence>
+<xs:element name="fhirbundle" type="xs:string" minOccurs="0"/>
+<xs:element name="idhcslogs" type="xs:int" minOccurs="0"/>
+<xs:element name="labeledresource" type="xs:string" minOccurs="0"/>
+<xs:element name="msgdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="msgid" type="xs:string" minOccurs="0"/>
+<xs:element name="obligations" type="xs:string" minOccurs="0"/>
+<xs:element name="ppsexecrules" type="xs:string" minOccurs="0"/>
+<xs:element name="ppsoutput" type="xs:string" minOccurs="0"/>
+<xs:element name="purposeofuse" type="xs:string" minOccurs="0"/>
+<xs:element name="slsexecrules" type="xs:string" minOccurs="0"/>
+<xs:element name="slsoutput" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="saveAuthorizationEventResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllHCSLogEvents">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllHCSLogEventsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:hcslogs" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
