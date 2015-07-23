@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="ws.hcs.hl7.socraticgrid.org" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="ws.hcs.hl7.socraticgrid.org">
+
+<xs:element name="HCSLabelingResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="processedAtomFeed" type="xs:string"/>
+<xs:element name="altered" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+
+<xs:element name="applySecurityLabelsFHIRForResourceRelease" type="tns:applySecurityLabelsFHIRForResourceRelease"/>
+
+<xs:element name="applySecurityLabelsFHIRForResourceReleaseResponse" type="tns:applySecurityLabelsFHIRForResourceReleaseResponse"/>
+
+<xs:element name="enforceSecurityLabelPolicy" type="tns:enforceSecurityLabelPolicy"/>
+
+<xs:element name="enforceSecurityLabelPolicyResponse" type="tns:enforceSecurityLabelPolicyResponse"/>
+
+<xs:element name="genFHIRConfidentialityLabels" type="tns:genFHIRConfidentialityLabels"/>
+
+<xs:element name="genFHIRConfidentialityLabelsResponse" type="tns:genFHIRConfidentialityLabelsResponse"/>
+
+<xs:complexType name="applySecurityLabelsFHIRForResourceRelease">
+<xs:sequence>
+<xs:element name="resource" type="xs:string" minOccurs="0"/>
+<xs:element name="organizationId" type="xs:string" minOccurs="0"/>
+<xs:element name="currendTags" type="tns:hcsCategory" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="purposeOfUse" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hcsCategory">
+<xs:sequence>
+<xs:element name="label" type="xs:string" minOccurs="0"/>
+<xs:element name="scheme" type="xs:string" minOccurs="0"/>
+<xs:element name="term" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="applySecurityLabelsFHIRForResourceReleaseResponse">
+<xs:sequence>
+<xs:element name="return" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="processedAtomFeed" type="xs:string"/>
+<xs:element name="altered" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="genFHIRConfidentialityLabels">
+<xs:sequence>
+<xs:element name="resource" type="xs:string" minOccurs="0"/>
+<xs:element name="currentTags" type="tns:hcsCategory" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="genFHIRConfidentialityLabelsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:hcsTaggingResponse" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hcsTaggingResponse">
+<xs:sequence>
+<xs:element name="processAdds" type="tns:hcsCategory" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="processDeletes" type="tns:hcsCategory" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="enforceSecurityLabelPolicy">
+<xs:sequence>
+<xs:element name="subjectId" type="xs:string" minOccurs="0"/>
+<xs:element name="role" type="xs:string" minOccurs="0"/>
+<xs:element name="organizationId" type="xs:string" minOccurs="0"/>
+<xs:element name="purposeOfUse" type="xs:string" minOccurs="0"/>
+<xs:element name="confidentialityClearance" type="xs:string" minOccurs="0"/>
+<xs:element name="sensitivityClearance" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="requestedResourceId" type="xs:string" minOccurs="0"/>
+<xs:element name="securityTags" type="tns:hcsCategory" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="enforceSecurityLabelPolicyResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:hcsPolicyDecision" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hcsPolicyDecision">
+<xs:sequence>
+<xs:element name="adviceOrObligation" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="decision" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
